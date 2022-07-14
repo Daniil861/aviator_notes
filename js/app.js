@@ -53,7 +53,7 @@
     const preloader = document.querySelector(".preloader");
     const wrapper = document.querySelector(".wrapper");
     document.documentElement.clientWidth;
-    document.documentElement.clientHeight;
+    const window_height = document.documentElement.clientHeight;
     function deleteMoney(count, block) {
         let money = +sessionStorage.getItem("money");
         sessionStorage.setItem("money", money - count);
@@ -108,17 +108,17 @@
         getRandomAnimate();
     }), 2e4);
     const prices = {
-        price_1: 3500,
-        price_2: 4500,
-        price_3: 5500
+        price_2: 25,
+        price_3: 60
     };
     if (document.querySelector(".main") && document.querySelector(".preloader").classList.contains("_hide")) {
         document.querySelector(".main").classList.add("_active");
         drawPrices();
+        drawStartCurrentAirplane();
         checkBoughtAirplanes();
+        checkCurrentAirplane();
     }
     function drawPrices() {
-        document.querySelector('[data-price="1"]').textContent = prices.price_1;
         document.querySelector('[data-price="2"]').textContent = prices.price_2;
         document.querySelector('[data-price="3"]').textContent = prices.price_3;
     }
@@ -126,13 +126,19 @@
         if (sessionStorage.getItem("airplane-2")) {
             document.querySelector('[data-shop-button="2"] p').textContent = "select";
             document.querySelector('[data-shop-button="2"]').classList.add("_bought");
+            document.querySelector('[data-airplane="2"]').classList.add("_bought");
         }
         if (sessionStorage.getItem("airplane-3")) {
             document.querySelector('[data-shop-button="3"] p').textContent = "select";
             document.querySelector('[data-shop-button="3"]').classList.add("_bought");
+            document.querySelector('[data-airplane="3"]').classList.add("_bought");
         }
     }
-    function drawStartAirplane() {
+    function checkCurrentAirplane() {
+        let airplane = +sessionStorage.getItem("current-airplane");
+        checkRemoveAddClass(".shop__item", "_selected", document.querySelectorAll(".shop__item")[airplane - 1]);
+    }
+    function drawStartCurrentAirplane() {
         if (!sessionStorage.getItem("current-airplane")) sessionStorage.setItem("current-airplane", 1);
     }
     const config_game = {
@@ -142,7 +148,7 @@
         current_coeff: 0,
         start_coeff: 0,
         coeff_up: .01,
-        speed_up: .3,
+        speed_up: .2,
         speed_right: .4,
         timerId: false,
         timerCoeff: false,
@@ -170,6 +176,7 @@
         svg_m.setAttribute("height", 8 * config_game.height_field);
         document.querySelector(".field__circle").style.left = `-${4 * config_game.height_field}px`;
         document.querySelector(".field__circle").style.bottom = `${3 * config_game.height_field}px`;
+        if (window_height >= 600) svg.setAttribute("stroke-dasharray", 300);
     }
     function addRotateCircleBg() {
         document.querySelector(".field__circle svg").classList.add("_rotate");
@@ -186,6 +193,7 @@
         generateLineColor();
         moovePlayer();
         intervalCoeff();
+        console.log(config_game.current_coeff);
     }
     function generateCoeff() {
         let state = +getRandom(1, 10);
@@ -199,8 +207,8 @@
         config_canvas.color_line = `${getRandom(0, 255)},${getRandom(0, 255)},${getRandom(0, 255)}`;
     }
     function moovePlayer() {
-        let bottom = 0;
-        let left = 0;
+        let bottom = 7;
+        let left = 2;
         let rotate = -5;
         let player = document.querySelector(".field__airplane");
         drawCanvas();
@@ -211,20 +219,47 @@
             player.style.bottom = `${bottom}%`;
             player.style.left = `${left}%`;
             player.style.transform = `rotate(${rotate}deg)`;
-            if (config_game.start_coeff >= config_game.current_coeff) {
-                player.style.transition = `all 2s ease 0s`;
-                player.style.left = `150%`;
-                player.style.bottom = `110%`;
-                config_game.state = 3;
-                stopAnimation();
-                addLooseColorButtons();
-                document.querySelector(".footer__button-cash").classList.add("_hold");
-                setTimeout((() => {
-                    clearCanvas();
-                    resetGame();
-                }), 2e3);
+            if (left >= 70 || bottom >= 70) {
+                clearInterval(config_game.timerId);
+                player.style.transition = `all 1s ease 0s`;
+                player.style.transform = `rotate(-5deg)`;
+                document.querySelector(".field__body").classList.add("_fly");
             }
         }), 35);
+    }
+    function checkGameOver() {
+        if (config_game.start_coeff >= config_game.current_coeff) {
+            flyAirplaneWhenLoose();
+            config_game.state = 3;
+            stopAnimation();
+            addLooseColorButtons();
+            document.querySelector(".footer__button-cash").classList.add("_hold");
+            setTimeout((() => {
+                resetGame();
+            }), 2e3);
+        }
+    }
+    function flyAirplaneWhenLoose() {
+        let player = document.querySelector(".field__airplane");
+        player.style.transition = `all 2s ease 0s`;
+        player.style.left = `150%`;
+        player.style.bottom = `110%`;
+    }
+    function autoMode() {
+        let bet = getRandomBet();
+        setTimeout((() => {
+            sessionStorage.setItem("current-bet", bet);
+            document.querySelector(".block-bet__coins").textContent = sessionStorage.getItem("current-bet");
+        }), 500);
+        setTimeout((() => {
+            startGame();
+        }), 1500);
+    }
+    function getRandomBet() {
+        let money = +sessionStorage.getItem("money");
+        let random_bet = getRandom(5, money);
+        if (random_bet % 5 != 0) random_bet -= random_bet % 5;
+        return random_bet;
     }
     function setCanvas() {
         let canvas = document.querySelector(".ctx");
@@ -263,7 +298,7 @@
             let coord_x = pin.getBoundingClientRect().left - 40;
             let coord_y = pin.getBoundingClientRect().top - 30;
             ctx.clearRect(0, 0, config_canvas.width, config_canvas.height);
-            createLineCanvas(coord_x, coord_y, config_canvas.color_line, 0, "3", 10, 15);
+            createLineCanvas(coord_x, coord_y, config_canvas.color_line, 0, "4", 10, 15);
         }), 50);
     }
     function intervalCoeff() {
@@ -271,7 +306,8 @@
             config_game.start_coeff += config_game.coeff_up;
             drawCurrentCoeff();
             drawCurrentCount();
-        }), 10);
+            checkGameOver();
+        }), 20);
     }
     function drawCurrentCoeff() {
         document.querySelector(".field__coeff").textContent = `${config_game.start_coeff.toFixed(2)}x`;
@@ -306,12 +342,39 @@
         document.querySelector(".field__coeff").textContent = "0x";
         removeLooseColorButtons();
         removeRotateCircleBg();
+        clearCanvas();
         document.querySelector(".field__body").classList.add("_loader");
+        if (document.querySelector(".field__body").classList.contains("_fly")) document.querySelector(".field__body").classList.remove("_fly");
         setTimeout((() => {
             document.querySelector(".field__body").classList.remove("_loader");
             if (document.querySelector(".footer__bet-box").classList.contains("_hold")) document.querySelector(".footer__bet-box").classList.remove("_hold");
             if (document.querySelector(".footer__button-cash").classList.contains("_hold")) document.querySelector(".footer__button-cash").classList.remove("_hold");
+            checkRemoveAddClass(".footer__button", "_active", document.querySelector('[data-footer-button="bet"]'));
         }), 5e3);
+    }
+    if (document.querySelector(".main")) {
+        const audio_main = document.querySelector(".audio_main");
+        audio_main.preload = "auto";
+        audio_main.volume = [ .3 ];
+        document.addEventListener("click", (e => {
+            let targetElement = e.target;
+            if (targetElement.closest(".volume")) {
+                if (targetElement.closest(".volume") && !targetElement.closest(".volume").classList.contains("_hide")) audio_main.pause(); else if (targetElement.closest(".volume") && targetElement.closest(".volume").classList.contains("_hide")) audio_main.play();
+                targetElement.closest(".volume").classList.toggle("_hide");
+            }
+        }));
+    }
+    if (document.querySelector(".game")) {
+        const audio_game = document.querySelector(".audio_game");
+        audio_game.preload = "auto";
+        audio_game.volume = [ .3 ];
+        document.addEventListener("click", (e => {
+            let targetElement = e.target;
+            if (targetElement.closest(".volume")) {
+                if (targetElement.closest(".volume") && !targetElement.closest(".volume").classList.contains("_hide")) audio_game.pause(); else if (targetElement.closest(".volume") && targetElement.closest(".volume").classList.contains("_hide")) audio_game.play();
+                targetElement.closest(".volume").classList.toggle("_hide");
+            }
+        }));
     }
     document.addEventListener("click", (e => {
         let targetElement = e.target;
@@ -361,6 +424,7 @@
         if (targetElement.closest('[data-footer-button="auto"]')) {
             checkRemoveAddClass(".footer__button", "_active", targetElement.closest('[data-footer-button="auto"]'));
             document.querySelector(".footer__bet-box").classList.add("_hold");
+            autoMode();
         }
         if (targetElement.closest(".footer__button-bet")) {
             document.querySelector(".footer__bet-box").classList.add("_hold");
