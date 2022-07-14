@@ -186,18 +186,17 @@
     }
     function startGame() {
         config_game.state = 2;
-        config_game.current_coeff = +getRandom_2(1.1, generateCoeff());
+        generateCoeff();
         deleteMoney(+sessionStorage.getItem("current-bet"), ".check");
         addRotateCircleBg();
         generateStartSpeed();
         generateLineColor();
         moovePlayer();
         intervalCoeff();
-        console.log(config_game.current_coeff);
     }
     function generateCoeff() {
-        let state = +getRandom(1, 10);
-        if (state > 0 && state <= 3) return 2; else if (state > 3 && state <= 7) return 3; else if (state > 7) return 5;
+        let state = getRandom(1, 10);
+        if (state > 0 && state <= 4) config_game.current_coeff = getRandom_2(1.1, 2); else if (state > 4 && state <= 7) config_game.current_coeff = getRandom_2(2, 3); else if (state > 7) config_game.current_coeff = getRandom_2(3, 5);
     }
     function generateStartSpeed() {
         config_game.speed_up = +getRandom_2(.11, .25);
