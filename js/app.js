@@ -387,7 +387,7 @@
             if (document.querySelector(".main") && document.querySelector(".preloader").classList.contains("_hide")) {
                 document.querySelector(".main").classList.add("_active");
                 drawPrices();
-                drawStartAirplane();
+                drawStartCurrentAirplane();
             }
         }
         if (targetElement.closest(".main__button_shop")) document.querySelector(".main__body").classList.add("_shop");
