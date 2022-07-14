@@ -421,24 +421,24 @@ body._loaded {
   color: #fff;
   transition: all 0.3s ease 0s;
 }
-@supports (width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
+@supports (width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem )) {
   .block-bet__minus, .block-bet__plus {
-    width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem );
+    width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem );
   }
 }
-@supports not (width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
+@supports not (width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem )) {
   .block-bet__minus, .block-bet__plus {
-    width: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 15.625);
+    width: calc(0.75rem + 0.3125 * (100vw - 34.375rem) / 15.625);
   }
 }
-@supports (height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
+@supports (height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem )) {
   .block-bet__minus, .block-bet__plus {
-    height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem );
+    height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem );
   }
 }
-@supports not (height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
+@supports not (height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.0625rem )) {
   .block-bet__minus, .block-bet__plus {
-    height: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 15.625);
+    height: calc(0.75rem + 0.3125 * (100vw - 34.375rem) / 15.625);
   }
 }
 @supports (font-size: clamp( 1rem , 0.4711538462rem  +  1.5384615385vw , 1.625rem )) {
@@ -1269,6 +1269,7 @@ body._loaded {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  row-gap: 0.4375rem;
   padding: 0.5rem 0;
   background: #191a18;
   border: 1px solid #96ffb3;
@@ -1320,14 +1321,14 @@ body._loaded {
   text-transform: uppercase;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-@supports (font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem )) {
+@supports (font-size: clamp( 0.375rem , 0.1rem  +  0.8vw , 0.5rem )) {
   .footer__button p {
-    font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem );
+    font-size: clamp( 0.375rem , 0.1rem  +  0.8vw , 0.5rem );
   }
 }
-@supports not (font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem )) {
+@supports not (font-size: clamp( 0.375rem , 0.1rem  +  0.8vw , 0.5rem )) {
   .footer__button p {
-    font-size: calc(0.375rem + 0.25 * (100vw - 34.375rem) / 15.625);
+    font-size: calc(0.375rem + 0.125 * (100vw - 34.375rem) / 15.625);
   }
 }
 @media (min-height: 37.5em) {
@@ -1360,14 +1361,14 @@ body._loaded {
   border-radius: 0.5rem;
   transition: all 0.3s ease 0s;
 }
-@supports (height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem )) {
+@supports (height: clamp( 2.1875rem , 1.5rem  +  2vw , 2.5rem )) {
   .footer__button-bet {
-    height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem );
+    height: clamp( 2.1875rem , 1.5rem  +  2vw , 2.5rem );
   }
 }
-@supports not (height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem )) {
+@supports not (height: clamp( 2.1875rem , 1.5rem  +  2vw , 2.5rem )) {
   .footer__button-bet {
-    height: calc(2.1875rem + 0.9375 * (100vw - 34.375rem) / 15.625);
+    height: calc(2.1875rem + 0.3125 * (100vw - 34.375rem) / 15.625);
   }
 }
 @media (min-height: 37.5em) {
