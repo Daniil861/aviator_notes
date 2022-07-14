@@ -337,6 +337,18 @@ body._loaded {
     height: calc(1.875rem + 1.25 * (100vw - 34.375rem) / 40.625);
   }
 }
+@media (min-height: 37.5em) {
+  @supports (height: clamp( 3.125rem , -0.625rem  +  7.5vw , 5rem )) {
+    .money__row {
+      height: clamp( 3.125rem , -0.625rem  +  7.5vw , 5rem );
+    }
+  }
+  @supports not (height: clamp( 3.125rem , -0.625rem  +  7.5vw , 5rem )) {
+    .money__row {
+      height: calc(3.125rem + 1.875 * (100vw - 50rem) / 25);
+    }
+  }
+}
 .money__row_game {
   background: #1a1b1c;
   border: 0.3px solid #363738;
@@ -390,6 +402,11 @@ body._loaded {
   border: 0.3px solid #363738;
   border-radius: 0.84375rem;
 }
+@media (min-height: 37.5em) {
+  .block-bet__controls {
+    border: 1px solid #363738;
+  }
+}
 .block-bet__controls._hold {
   transition: all 0.6s ease 0s;
   pointer-events: none;
@@ -404,24 +421,24 @@ body._loaded {
   color: #fff;
   transition: all 0.3s ease 0s;
 }
-@supports (width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem )) {
+@supports (width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
   .block-bet__minus, .block-bet__plus {
-    width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem );
+    width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem );
   }
 }
-@supports not (width: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem )) {
+@supports not (width: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
   .block-bet__minus, .block-bet__plus {
-    width: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 40.625);
+    width: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 15.625);
   }
 }
-@supports (height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem )) {
+@supports (height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
   .block-bet__minus, .block-bet__plus {
-    height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem );
+    height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem );
   }
 }
-@supports not (height: clamp( 0.75rem , 0.0625rem  +  2vw , 1.5625rem )) {
+@supports not (height: clamp( 0.75rem , -1.0375rem  +  5.2vw , 1.5625rem )) {
   .block-bet__minus, .block-bet__plus {
-    height: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 40.625);
+    height: calc(0.75rem + 0.8125 * (100vw - 34.375rem) / 15.625);
   }
 }
 @supports (font-size: clamp( 1rem , 0.4711538462rem  +  1.5384615385vw , 1.625rem )) {
@@ -432,6 +449,28 @@ body._loaded {
 @supports not (font-size: clamp( 1rem , 0.4711538462rem  +  1.5384615385vw , 1.625rem )) {
   .block-bet__minus, .block-bet__plus {
     font-size: calc(1rem + 0.625 * (100vw - 34.375rem) / 40.625);
+  }
+}
+@media (min-height: 37.5em) {
+  @supports (width: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem )) {
+    .block-bet__minus, .block-bet__plus {
+      width: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem );
+    }
+  }
+  @supports not (width: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem )) {
+    .block-bet__minus, .block-bet__plus {
+      width: calc(1.5625rem + 0.625 * (100vw - 50rem) / 25);
+    }
+  }
+  @supports (height: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem )) {
+    .block-bet__minus, .block-bet__plus {
+      height: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem );
+    }
+  }
+  @supports not (height: clamp( 1.5625rem , 0.3125rem  +  2.5vw , 2.1875rem )) {
+    .block-bet__minus, .block-bet__plus {
+      height: calc(1.5625rem + 0.625 * (100vw - 50rem) / 25);
+    }
   }
 }
 .block-bet__minus:active, .block-bet__plus:active {
@@ -451,14 +490,14 @@ body._loaded {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
-@supports (font-size: clamp( 0.75rem , 0.3269230769rem  +  1.2307692308vw , 1.25rem )) {
+@supports (font-size: clamp( 0.75rem , 0.1153846154rem  +  1.8461538462vw , 1.5rem )) {
   .block-bet__coins {
-    font-size: clamp( 0.75rem , 0.3269230769rem  +  1.2307692308vw , 1.25rem );
+    font-size: clamp( 0.75rem , 0.1153846154rem  +  1.8461538462vw , 1.5rem );
   }
 }
-@supports not (font-size: clamp( 0.75rem , 0.3269230769rem  +  1.2307692308vw , 1.25rem )) {
+@supports not (font-size: clamp( 0.75rem , 0.1153846154rem  +  1.8461538462vw , 1.5rem )) {
   .block-bet__coins {
-    font-size: calc(0.75rem + 0.5 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(0.75rem + 0.75 * (100vw - 34.375rem) / 40.625);
   }
 }
 .block-bet__coins._no-money {
@@ -877,6 +916,9 @@ body._loaded {
 .shop__item._selected {
   background: linear-gradient(180deg, #e62424 0%, rgba(192, 0, 0, 0) 100%);
 }
+.shop__item._bought .shop__price {
+  display: none;
+}
 .shop__image {
   flex: 1 1 auto;
   padding-top: 1.25rem;
@@ -1003,8 +1045,13 @@ body._loaded {
 .game__content {
   display: grid;
   grid-template: 3fr 1fr/1fr;
-  min-height: calc(100vh - 20px);
+  max-height: calc(100vh - 20px);
   row-gap: 0.9375rem;
+}
+@media (min-height: 37.5em) {
+  .game__content {
+    grid-template: 4fr 1fr/1fr;
+  }
 }
 .field__body {
   position: relative;
@@ -1013,6 +1060,15 @@ body._loaded {
   border: 1px solid rgba(243, 243, 243, 0.18);
   border-radius: 0.625rem;
   overflow: hidden;
+}
+.field__body._fly .field__vertical-dots {
+  animation: moove_vert_dots 15s linear;
+}
+.field__body._fly .field__horizontal-dots {
+  animation: moove_horz_dots 15s linear;
+}
+.field__body._fly .field__airplane {
+  animation: fly_air 1s ease infinite 0.5s;
 }
 .field__body._loader .field__airplane {
   animation: start_air 5s ease;
@@ -1060,15 +1116,15 @@ body._loaded {
 }
 .field__vertical-dots {
   position: absolute;
-  top: 0.625rem;
+  bottom: 0.625rem;
   left: 0.625rem;
-  height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  overflow: hidden;
   transition: all 0.3s ease 0s;
 }
 .field__vertical-dots span {
+  margin-top: 1.25rem;
   border-radius: 50%;
   background-color: #21a2ff;
 }
@@ -1092,22 +1148,27 @@ body._loaded {
     height: calc(0.3125rem + 0.3125 * (100vw - 34.375rem) / 40.625);
   }
 }
+@media (min-height: 37.5em) {
+  .field__vertical-dots span {
+    margin-top: 3.125rem;
+  }
+}
 .field__horizontal-dots {
   position: absolute;
   bottom: 0;
   left: 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 1.875rem;
   padding-left: 0.625rem;
+  background: #050505;
   border-top-color: #363636;
   border-top-style: solid;
   border-top-width: 1px;
   transition: all 0.3s ease 0s;
 }
 .field__horizontal-dots span {
+  margin-right: 4.375rem;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -1131,14 +1192,22 @@ body._loaded {
     height: calc(0.3125rem + 0.3125 * (100vw - 34.375rem) / 40.625);
   }
 }
-.field__horizontal-dots span:last-child {
-  opacity: 0;
+@media (min-height: 37.5em) {
+  .field__horizontal-dots span {
+    margin-right: 6.25rem;
+  }
 }
 .field__airplane {
   position: absolute;
   bottom: 7%;
   left: 2%;
   transform: rotate(-5deg);
+  z-index: 2;
+}
+@media (min-height: 37.5em) {
+  .field__airplane img {
+    width: 13.75rem;
+  }
 }
 .field__pin {
   position: absolute;
@@ -1161,19 +1230,24 @@ body._loaded {
   opacity: 0;
   transition: all 0.7s ease 0s;
 }
+@media (min-height: 37.5em) {
+  .field__loader img {
+    width: 12.5rem;
+  }
+}
 .field__loader p {
   font-weight: 500;
   line-height: 1.15;
   color: #ffffff;
 }
-@supports (font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem )) {
+@supports (font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem )) {
   .field__loader p {
-    font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem );
+    font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem );
   }
 }
-@supports not (font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem )) {
+@supports not (font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem )) {
   .field__loader p {
-    font-size: calc(1rem + 0.5 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(1rem + 0.875 * (100vw - 34.375rem) / 40.625);
   }
 }
 
@@ -1181,6 +1255,7 @@ body._loaded {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .footer__body {
@@ -1201,6 +1276,12 @@ body._loaded {
   border-radius: 15px 15px 0px 0px;
   transition: all 0.3s ease 0s;
 }
+@media (min-height: 37.5em) {
+  .footer__bet-box {
+    border: 2px solid #96ffb3;
+    border-bottom-width: 0px;
+  }
+}
 .footer__bet-box._hold {
   pointer-events: none;
   opacity: 0.5;
@@ -1213,8 +1294,18 @@ body._loaded {
   border: 0.3px solid #363738;
   border-radius: 0.40625rem;
 }
+@media (min-height: 37.5em) {
+  .footer__buttons {
+    border: 1px solid #363738;
+  }
+}
 .footer__button {
   border: 0.3px solid transparent;
+}
+@media (min-height: 37.5em) {
+  .footer__button {
+    border: 1px solid transparent;
+  }
 }
 .footer__button._active {
   background: #2c2d30;
@@ -1229,14 +1320,29 @@ body._loaded {
   text-transform: uppercase;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-@supports (font-size: clamp( 0.375rem , 0.1634615385rem  +  0.6153846154vw , 0.625rem )) {
+@supports (font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem )) {
   .footer__button p {
-    font-size: clamp( 0.375rem , 0.1634615385rem  +  0.6153846154vw , 0.625rem );
+    font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem );
   }
 }
-@supports not (font-size: clamp( 0.375rem , 0.1634615385rem  +  0.6153846154vw , 0.625rem )) {
+@supports not (font-size: clamp( 0.375rem , -0.175rem  +  1.6vw , 0.625rem )) {
   .footer__button p {
-    font-size: calc(0.375rem + 0.25 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(0.375rem + 0.25 * (100vw - 34.375rem) / 15.625);
+  }
+}
+@media (min-height: 37.5em) {
+  .footer__button p {
+    padding: 0.4375rem 1.5625rem;
+  }
+  @supports (font-size: clamp( 1rem , 0.7884615385rem  +  0.6153846154vw , 1.25rem )) {
+    .footer__button p {
+      font-size: clamp( 1rem , 0.7884615385rem  +  0.6153846154vw , 1.25rem );
+    }
+  }
+  @supports not (font-size: clamp( 1rem , 0.7884615385rem  +  0.6153846154vw , 1.25rem )) {
+    .footer__button p {
+      font-size: calc(1rem + 0.25 * (100vw - 34.375rem) / 40.625);
+    }
   }
 }
 .footer__bet {
@@ -1251,17 +1357,29 @@ body._loaded {
   width: 95%;
   background: #28a909;
   box-shadow: 0px 4px 11px rgba(45, 233, 0, 0.51), inset 0px 4px 4px rgba(255, 255, 255, 0.25);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   transition: all 0.3s ease 0s;
 }
-@supports (height: clamp( 2.1875rem , 1.3942307692rem  +  2.3076923077vw , 3.125rem )) {
+@supports (height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem )) {
   .footer__button-bet {
-    height: clamp( 2.1875rem , 1.3942307692rem  +  2.3076923077vw , 3.125rem );
+    height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem );
   }
 }
-@supports not (height: clamp( 2.1875rem , 1.3942307692rem  +  2.3076923077vw , 3.125rem )) {
+@supports not (height: clamp( 2.1875rem , 0.125rem  +  6vw , 3.125rem )) {
   .footer__button-bet {
-    height: calc(2.1875rem + 0.9375 * (100vw - 34.375rem) / 40.625);
+    height: calc(2.1875rem + 0.9375 * (100vw - 34.375rem) / 15.625);
+  }
+}
+@media (min-height: 37.5em) {
+  @supports (height: clamp( 2.5rem , 0rem  +  5vw , 3.75rem )) {
+    .footer__button-bet {
+      height: clamp( 2.5rem , 0rem  +  5vw , 3.75rem );
+    }
+  }
+  @supports not (height: clamp( 2.5rem , 0rem  +  5vw , 3.75rem )) {
+    .footer__button-bet {
+      height: calc(2.5rem + 1.25 * (100vw - 50rem) / 25);
+    }
   }
 }
 .footer__button-bet p {
@@ -1272,14 +1390,26 @@ body._loaded {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
 }
-@supports (font-size: clamp( 0.5rem , 0.1826923077rem  +  0.9230769231vw , 0.875rem )) {
+@supports (font-size: clamp( 0.5rem , -0.325rem  +  2.4vw , 0.875rem )) {
   .footer__button-bet p {
-    font-size: clamp( 0.5rem , 0.1826923077rem  +  0.9230769231vw , 0.875rem );
+    font-size: clamp( 0.5rem , -0.325rem  +  2.4vw , 0.875rem );
   }
 }
-@supports not (font-size: clamp( 0.5rem , 0.1826923077rem  +  0.9230769231vw , 0.875rem )) {
+@supports not (font-size: clamp( 0.5rem , -0.325rem  +  2.4vw , 0.875rem )) {
   .footer__button-bet p {
-    font-size: calc(0.5rem + 0.375 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(0.5rem + 0.375 * (100vw - 34.375rem) / 15.625);
+  }
+}
+@media (min-height: 37.5em) {
+  @supports (font-size: clamp( 1rem , 0.5rem  +  1vw , 1.25rem )) {
+    .footer__button-bet p {
+      font-size: clamp( 1rem , 0.5rem  +  1vw , 1.25rem );
+    }
+  }
+  @supports not (font-size: clamp( 1rem , 0.5rem  +  1vw , 1.25rem )) {
+    .footer__button-bet p {
+      font-size: calc(1rem + 0.25 * (100vw - 50rem) / 25);
+    }
   }
 }
 .footer__button-bet:active {
@@ -1302,14 +1432,14 @@ body._loaded {
   line-height: 1.15;
   color: #ffffff;
 }
-@supports (font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem )) {
+@supports (font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem )) {
   .footer__balance-text {
-    font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem );
+    font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem );
   }
 }
-@supports not (font-size: clamp( 1rem , 0.5769230769rem  +  1.2307692308vw , 1.5rem )) {
+@supports not (font-size: clamp( 1rem , 0.2596153846rem  +  2.1538461538vw , 1.875rem )) {
   .footer__balance-text {
-    font-size: calc(1rem + 0.5 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(1rem + 0.875 * (100vw - 34.375rem) / 40.625);
   }
 }
 .footer__cash-out-box {
@@ -1320,6 +1450,12 @@ body._loaded {
   border: 1px solid #96ffb3;
   border-bottom-width: 0px;
   border-radius: 15px 15px 0px 0px;
+}
+@media (min-height: 37.5em) {
+  .footer__cash-out-box {
+    border: 2px solid #96ffb3;
+    border-bottom-width: 0px;
+  }
 }
 .footer__button-cash {
   display: flex;
@@ -1338,14 +1474,19 @@ body._loaded {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
 }
-@supports (font-size: clamp( 0.5rem , 0.0769230769rem  +  1.2307692308vw , 1rem )) {
+@supports (font-size: clamp( 0.5rem , -0.2403846154rem  +  2.1538461538vw , 1.375rem )) {
   .footer__button-cash {
-    font-size: clamp( 0.5rem , 0.0769230769rem  +  1.2307692308vw , 1rem );
+    font-size: clamp( 0.5rem , -0.2403846154rem  +  2.1538461538vw , 1.375rem );
   }
 }
-@supports not (font-size: clamp( 0.5rem , 0.0769230769rem  +  1.2307692308vw , 1rem )) {
+@supports not (font-size: clamp( 0.5rem , -0.2403846154rem  +  2.1538461538vw , 1.375rem )) {
   .footer__button-cash {
-    font-size: calc(0.5rem + 0.5 * (100vw - 34.375rem) / 40.625);
+    font-size: calc(0.5rem + 0.875 * (100vw - 34.375rem) / 40.625);
+  }
+}
+@media (min-height: 37.5em) {
+  .footer__button-cash {
+    height: 30%;
   }
 }
 .footer__button-cash:active {
@@ -1399,7 +1540,7 @@ body._loaded {
 }
 @keyframes show_item_x {
   100% {
-    transform: translateX(0) rotate(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -1553,5 +1694,29 @@ body._loaded {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes fly_air {
+  0%, 100% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate(0, 20px) rotate(-5deg);
+  }
+}
+@keyframes moove_horz_dots {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+}
+@keyframes moove_vert_dots {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
   }
 }
